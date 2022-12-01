@@ -1,12 +1,16 @@
 import css from './ContactForm.module.css';
 
-import { getContacts } from 'redux/selectors'; //redux
+import { getContacts } from '../../redux/selectors'; //redux
 import { useSelector } from 'react-redux'; //redux
 import { useDispatch } from 'react-redux'; //redux
-import { addContact } from '../../redux/contactsSlice';
+// import { useEffect } from 'react';
+// import { fetchContacts } from '../../redux/operations';
+
+import { addContact } from '../../redux/operations';
 
 export const ContactForm = () => {
   const contacts = useSelector(getContacts); //redux
+
   const dispatch = useDispatch(); //redux
 
   const handleOnSubmit = e => {
@@ -14,8 +18,9 @@ export const ContactForm = () => {
 
     const form = e.currentTarget;
     let presenceContact = false;
+    // console.log(contacts);
 
-    contacts.arr.map(({ name }) => {
+    contacts.map(({ name }) => {
       if (name === form.name.value) {
         form.reset();
         presenceContact = true;
@@ -26,10 +31,19 @@ export const ContactForm = () => {
     });
 
     if (!presenceContact) {
-      dispatch(addContact(form.name.value, form.number.value));
+      // console.log('11111', String(form.name.value, form.number.value));
+      // console.log('22222', form.name.value, String(form.number.value));
+      // console.log(addContact);
+      // dispatch(fetchUsers({ status: 'active', sortBy: 'name' }));
+      // dispatch(addContact(form.name.value, String(form.number.value)));
+      dispatch(addContact({ name: form.name.value, phone: form.number.value }));
       form.reset();
     }
   };
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
   return (
     <div className={css.form}>
       <form onSubmit={handleOnSubmit}>
