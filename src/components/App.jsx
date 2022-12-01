@@ -8,9 +8,7 @@ import { fetchContacts } from 'redux/operations';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Section } from './Section/Section';
 import { ContactList } from './Contacts/ContactList';
-// import { ContactsCounter } from './ContactsCounter/ContactsCounter';
-// import { Example } from './Example/Example';
-
+import { ContactsCounter } from './ContactsCounter/ContactsCounter';
 export const App = () => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -30,12 +28,11 @@ export const App = () => {
       <Section title="Phonebook">
         <ContactForm />
       </Section>
-      {/* <ContactsCounter /> */}
+      <ContactsCounter />
       {isLoading && !error && <b>Request in progress...</b>}
       <Section title="Contacts">
         <ContactList />
       </Section>
-      {/* <Example /> */}
     </div>
   );
 };

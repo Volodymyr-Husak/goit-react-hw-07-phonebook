@@ -1,15 +1,13 @@
 import css from './Contacts.module.css';
-// import { useSelector } from 'react-redux'; //redux
-// import { getContacts } from '../../redux/selectors';
-// import { getFilter } from '../../redux/selectors';
+import { useSelector } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
+import { getFilter } from '../../redux/selectors';
 
 import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
 
-import { deleteContact, fetchContacts } from '../../redux/operations';
-// import { fetchContacts } from 'redux/operations';
+import { deleteContact } from '../../redux/operations';
 
-const getVisibleContacts = ({ contacts, filter }) => {
+const getVisibleContacts = (contacts, filter) => {
   if (filter.length === 0) {
     return contacts;
   }
@@ -24,24 +22,18 @@ const getVisibleContacts = ({ contacts, filter }) => {
   return contactsFindArr;
 };
 
-export const Contacts = (
-  contacts,
-  filter
-  // { visibleContacts }
-) => {
+export const Contacts = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
-  let visibleContacts = getVisibleContacts(contacts, filter);
 
   const handleDelete = e => {
     const currentId = e.currentTarget.id;
+    console.log(currentId);
     dispatch(deleteContact(currentId));
-    visibleContacts = getVisibleContacts(contacts, filter);
-    console.log('visibleContacts', visibleContacts);
   };
 
-  // const visibleContacts = getVisibleContacts(contacts, filter);
-  // console.log('visibleContacts', visibleContacts);
+  const visibleContacts = getVisibleContacts(contacts, filter);
 
   return visibleContacts.map(({ name, phone, id }) => (
     <li className={css.contact_item} key={id}>
@@ -49,7 +41,7 @@ export const Contacts = (
         &#10032; {name}: {phone}
       </span>
       <button className={css.btn} onClick={handleDelete} id={id}>
-        Видалити
+        Delete
       </button>
     </li>
   ));
