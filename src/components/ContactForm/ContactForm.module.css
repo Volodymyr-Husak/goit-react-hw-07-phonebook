@@ -1,18 +1,22 @@
 .form {
-    /* display: block; */
     border: 1px solid;
     padding: 20px;
-    width: 500px;
+    border-radius: 20px;
+    background-color: rgb(181, 219, 207);
 }
 
 
 .btn {
     cursor: pointer; 
     border-radius: 5px; 
-    font-size: 20px; 
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+    background-color: rgb(210, 211, 201);
+    padding: 10px;
 }
 .btn:hover {
-    background-color: rgb(69, 69, 209);
+    background-color: rgb(125, 125, 156);
 } 
 
 label {

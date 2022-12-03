@@ -17,14 +17,7 @@ export const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div
-      style={{
-        height: '100vh',
-        fontSize: 40,
-        color: '#010101',
-        display: 'block',
-      }}
-    >
+    <div>
       <Section title="Phonebook">
         <ContactForm />
       </Section>

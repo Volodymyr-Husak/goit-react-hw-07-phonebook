@@ -12,9 +12,9 @@ export const ContactList = () => {
   };
 
   return (
-    <div>
+    <div className={css.contacts__container}>
       <label>
-        Find contacts by name
+        {/* Find contacts by name */}
         <input
           type="text"
           name="filter"
@@ -22,6 +22,7 @@ export const ContactList = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           onChange={onChangeFilter}
+          placeholder="Find contacts by name..."
         />
       </label>
       <ul className={css.contacts_list}>
