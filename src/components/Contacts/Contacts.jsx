@@ -29,7 +29,6 @@ export const Contacts = () => {
 
   const handleDelete = e => {
     const currentId = e.currentTarget.id;
-    console.log(currentId);
     dispatch(deleteContact(currentId));
   };
 
